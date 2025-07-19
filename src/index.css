@@ -1,42 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* RIA Protocol Design System - Modern Web3 Trust-focused Design */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
+    /* Primary brand colors - Blue to Purple gradient theme */
+    --primary: 222 84% 12%;
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
+    --primary-glow: 222 100% 85%;
+    
+    /* Trust gradient colors */
+    --trust-start: 217 91% 60%;
+    --trust-mid: 262 83% 58%;
+    --trust-end: 292 84% 61%;
+    
+    /* Background system */
+    --background: 222 84% 5%;
+    --background-secondary: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    
+    /* Surface colors */
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --card-hover: 222 47% 13%;
+    
+    /* Interactive elements */
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Status colors */
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+    --warning: 45 93% 47%;
+    --warning-foreground: 222 84% 5%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
+    
+    /* Neutral system */
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 32% 17%;
+    --accent-foreground: 210 40% 98%;
+    
+    /* Borders and inputs */
+    --border: 217 32% 17%;
+    --input: 217 32% 17%;
+    --ring: 217 91% 60%;
+    
+    /* Gradients */
+    --gradient-trust: linear-gradient(135deg, hsl(var(--trust-start)), hsl(var(--trust-mid)), hsl(var(--trust-end)));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--trust-start)));
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card-hover)));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--background-secondary)));
+    
+    /* Shadows */
+    --shadow-trust: 0 10px 40px -10px hsl(var(--trust-start) / 0.3);
+    --shadow-card: 0 4px 20px -2px hsl(222 84% 5% / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--trust-start) / 0.2);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +132,44 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-inter;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+  
+  /* Custom utility classes */
+  .gradient-trust {
+    background: var(--gradient-trust);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .shadow-trust {
+    box-shadow: var(--shadow-trust);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+  
+  /* Glass effect */
+  .glass {
+    backdrop-filter: blur(12px);
+    background: hsl(var(--card) / 0.8);
+    border: 1px solid hsl(var(--border) / 0.2);
   }
 }
